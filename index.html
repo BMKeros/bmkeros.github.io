@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="BMKEROS">
 
 <head>
 
@@ -185,7 +185,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" ng-controller="EmailController">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -201,28 +201,28 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Nombre.</label>
-                                <input type="text" class="form-control" placeholder="Nombre" id="name" required data-validation-required-message="Por favor! Introduce tu nombre.">
+                                <input type="text" class="form-control" placeholder="Nombre" id="name" required data-validation-required-message="Por favor! Introduce tu nombre." ng-model="datos_mail.nombre">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Direccion de correo.</label>
-                                <input type="email" class="form-control" placeholder="Correo Electronico" id="email" required data-validation-required-message="Por favor! Introdce una direccion de correo.">
+                                <input type="email" class="form-control" placeholder="Correo Electronico" id="email" required data-validation-required-message="Por favor! Introdce una direccion de correo." ng-model="datos_mail.email">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Numero de telefono.</label>
-                                <input type="tel" class="form-control" placeholder="Numero de Telefono" id="phone" required data-validation-required-message="Por favor! Introduce tu numero de contacto.">
+                                <input type="tel" class="form-control" placeholder="Numero de Telefono" id="phone" required data-validation-required-message="Por favor! Introduce tu numero de contacto." ng-model="datos_mail.numero_telefono">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label></i>Comentario</label>
-                                <textarea rows="5" class="form-control" placeholder="Comentanos" id="message" required data-validation-required-message="Envianos tu comentario."></textarea>
+                                <textarea rows="5" class="form-control" placeholder="Comentanos" id="message" required data-validation-required-message="Envianos tu comentario." ng-model="datos_mail.comentario"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -230,7 +230,7 @@
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-lg">Enviar</button>
+                                <button type="submit" class="btn btn-success btn-lg" ng-click="enviar_email()">Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -519,6 +519,7 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
@@ -534,6 +535,19 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
+
+
+    <script type="text/javascript">
+      
+      angular.module('BMKEROS')
+      .controller('EmailController',['$scope', '$http',function(){
+          $scope.datos_mail = {};
+
+          $scope.enviar_email = function(){
+            console.log($scope.datos_mail);
+          }
+      }]);
+    </script>
 
 </body>
 
