@@ -539,8 +539,9 @@
 
     <script type="text/javascript">
       
-      angular.module('BMKEROS')
-      .controller('EmailController',['$scope', '$http',function(){
+      var BMKApp = angular.module('BMKEROS');
+      
+      BMKApp.controller('EmailController',['$scope', '$http',function(){
           $scope.datos_mail = {};
 
           $scope.enviar_email = function(){
